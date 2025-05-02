@@ -32,7 +32,7 @@ services:
       - .:/app
   redis:
     image: redis:alpine
-'''
+```
 
 ## 4. 주요 명령어
 
@@ -48,19 +48,22 @@ services:
 
 ## 5. 사용 예시
 1단계: 프로젝트 구조
-'''my-app/
+my-app/
+```
 ├── app.py
 ├── Dockerfile
 └── docker-compose.yml
+```
 Dockerfile
-'''
+```
 FROM python:3.9-slim
 WORKDIR /app
 COPY . .
 RUN pip install flask
 CMD ["python", "app.py"]
+```
 docker-compose.yml
-'''
+```
 version: "3.8"
 
 services:
@@ -68,10 +71,11 @@ services:
     build: .
     ports:
       - "5000:5000"
+```
 실행
-'''
+```
 docker-compose up
-'''
+```
 ## 6. 사용 목적
 여러 서비스 컨테이너를 하나의 파일로 관리
 
