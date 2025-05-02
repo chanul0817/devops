@@ -48,13 +48,13 @@ services:
 
 ## 5. 사용 예시
 1단계: 프로젝트 구조
-my-app/
+### my-app/
 ```
 ├── app.py
 ├── Dockerfile
 └── docker-compose.yml
 ```
-Dockerfile
+### Dockerfile
 ```dockerfile
 FROM python:3.9-slim
 WORKDIR /app
@@ -62,7 +62,7 @@ COPY . .
 RUN pip install flask
 CMD ["python", "app.py"]
 ```
-docker-compose.yml
+### docker-compose.yml
 ```yaml
 version: "3.8"
 
@@ -72,7 +72,7 @@ services:
     ports:
       - "5000:5000"
 ```
-실행
+### 실행
 ```
 docker-compose up
 ```
