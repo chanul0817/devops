@@ -55,7 +55,7 @@ my-app/
 └── docker-compose.yml
 ```
 Dockerfile
-```
+```dockerfile
 FROM python:3.9-slim
 WORKDIR /app
 COPY . .
@@ -63,7 +63,7 @@ RUN pip install flask
 CMD ["python", "app.py"]
 ```
 docker-compose.yml
-```
+```yaml
 version: "3.8"
 
 services:
