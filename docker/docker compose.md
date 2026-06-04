@@ -43,6 +43,9 @@ services:
 | `docker-compose down` | 컨테이너 종료 및 네트워크 제거 |
 | `docker-compose build` | 이미지 수동 빌드 |
 | `docker-compose ps` | 실행 중인 컨테이너 확인 |
+| `docker-compose logs -f` | 로그 실시간 확인 |
+| `docker-compose exec web sh` | 실행 중인 web 컨테이너 안으로 접속 |
+| `docker-compose restart web` | web 서비스만 재시작 |
 
 ---
 
@@ -83,5 +86,11 @@ docker-compose up
 
 로컬에서 간편하게 전체 시스템 실행
 
+## 7. 헷갈렸던 점
+
+- `up -d`는 뒤에서 실행하고 바로 터미널을 돌려준다
+- `down`을 하면 compose가 만든 네트워크까지 같이 정리된다
+- 로그 볼 때는 `logs -f`를 많이 쓴다
+- 컨테이너 안에서 확인할 게 있으면 `exec`로 들어가면 된다
 
 
