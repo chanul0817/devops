@@ -50,6 +50,16 @@
 `sync --delete`는 편하지만 잘못 쓰면 S3 파일이 같이 지워질 수 있음.
 처음에는 `--dryrun`으로 어떤 파일이 올라가고 지워지는지 먼저 보는 게 안전함.
 
+### 자주 쓰는 상황
+
+- React나 Vue 빌드 결과물을 정적 호스팅 버킷에 올릴 때
+  aws s3 sync ./dist s3://버킷명 --delete
+
+- EC2에서 백업 파일을 S3로 올릴 때
+  aws s3 sync /home/ubuntu/backup s3://버킷명/backup
+
+- 로그나 백업 폴더는 실수로 다 지워질 수 있으니 `--delete`를 바로 붙이기보다 먼저 `--dryrun`으로 확인하는 편이 안전함
+
 ## 특정 파일만 업로드 또는 제외
 
 - 특정 확장자 제외하고 업로드
@@ -65,3 +75,6 @@
 
 - grants 옵션 사용
   aws s3 cp 파일명 s3://버킷명 --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+
+버킷 정책이나 퍼블릭 액세스 차단이 걸려 있으면 `--acl public-read`만 붙여도 바로 공개되지 않을 수 있음.
+정적 웹 호스팅이나 이미지 링크 테스트할 때는 CLI 명령어만 보지 말고 버킷 설정도 같이 확인해야 함.
