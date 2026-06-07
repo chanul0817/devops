@@ -78,6 +78,30 @@ spec:
 - `readinessProbe`는 Service 트래픽을 받을지 판단하는 용도
 - `livenessProbe`는 앱이 복구 불가능한 상태인지 판단하고 재시작하는 용도
 
+### 다른 체크 방식 예시
+
+1. **TCP 체크**
+   - 포트가 열렸는지만 빠르게 확인할 때 사용
+
+```yaml
+readinessProbe:
+  tcpSocket:
+    port: 3306
+  periodSeconds: 5
+```
+
+2. **exec 체크**
+   - HTTP 엔드포인트가 없고, 파일 존재 여부나 프로세스 상태를 직접 보고 싶을 때 사용
+
+```yaml
+livenessProbe:
+  exec:
+    command:
+      - cat
+      - /tmp/healthy
+  periodSeconds: 10
+```
+
 ---
 
 ## 운영 시 설정 기준
@@ -94,3 +118,9 @@ spec:
 - Liveness Probe에 DB 연결 확인처럼 외부 의존성이 큰 체크를 넣으면, DB 장애 때 Pod가 계속 재시작될 수 있음
 - Readiness Probe 없이 배포하면, 앱이 아직 준비되지 않았는데 Service가 트래픽을 보낼 수 있음
 - Startup Probe 없이 느리게 뜨는 앱에 Liveness Probe만 설정하면, 기동 중인 컨테이너가 계속 재시작될 수 있음
+
+### 운영에서 한번씩 겪는 상황
+
+- 배포 직후 `CrashLoopBackOff`가 반복되면, 앱 자체 오류인지 Probe 타이밍 문제인지 같이 봐야 함
+- `kubectl describe pod <pod명>`으로 이벤트를 보면 `Liveness probe failed`, `Readiness probe failed`가 바로 보여서 원인 찾기 쉬움
+- readiness 실패가 길어지면 Pod는 살아 있어도 Service 뒤에서는 빠지기 때문에, ALB Ingress나 API 응답 수가 갑자기 줄어든 것처럼 보일 수 있음
