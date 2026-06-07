@@ -102,6 +102,38 @@ livenessProbe:
   periodSeconds: 10
 ```
 
+### 실무에서 많이 보는 구성
+
+Spring Boot처럼 기동이 느린 앱은 보통 이렇게 나눠서 생각함
+
+- `startupProbe`: 애플리케이션이 완전히 뜰 때까지 기다림
+- `readinessProbe`: DB 커넥션 풀 초기화나 캐시 워밍업 끝났는지 확인
+- `livenessProbe`: 스레드가 멈췄거나 응답이 안 오는 상태만 확인
+
+예를 들어 배포 직후 `/actuator/health`는 200인데 실제로는 마이그레이션이 안 끝난 상태일 수 있음  
+이럴 때 readiness를 별도로 두면 Pod는 떠 있어도 Service 뒤로는 바로 안 붙어서 덜 위험함
+
+```yaml
+startupProbe:
+  httpGet:
+    path: /actuator/health
+    port: 8080
+  periodSeconds: 5
+  failureThreshold: 24
+readinessProbe:
+  httpGet:
+    path: /actuator/health/readiness
+    port: 8080
+  periodSeconds: 5
+  failureThreshold: 3
+livenessProbe:
+  httpGet:
+    path: /actuator/health/liveness
+    port: 8080
+  periodSeconds: 10
+  failureThreshold: 3
+```
+
 ---
 
 ## 운영 시 설정 기준
@@ -124,3 +156,5 @@ livenessProbe:
 - 배포 직후 `CrashLoopBackOff`가 반복되면, 앱 자체 오류인지 Probe 타이밍 문제인지 같이 봐야 함
 - `kubectl describe pod <pod명>`으로 이벤트를 보면 `Liveness probe failed`, `Readiness probe failed`가 바로 보여서 원인 찾기 쉬움
 - readiness 실패가 길어지면 Pod는 살아 있어도 Service 뒤에서는 빠지기 때문에, ALB Ingress나 API 응답 수가 갑자기 줄어든 것처럼 보일 수 있음
+- `kubectl get pod`에서는 Running인데 요청이 계속 503이면 readiness 실패부터 보는 게 빠름
+- 앱 로그에는 에러가 없는데 Pod만 재시작되면, `/actuator/health` 응답 시간과 `timeoutSeconds`가 너무 타이트한 경우도 많음
