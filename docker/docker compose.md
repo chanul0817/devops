@@ -93,4 +93,36 @@ docker-compose up
 - 로그 볼 때는 `logs -f`를 많이 쓴다
 - 컨테이너 안에서 확인할 게 있으면 `exec`로 들어가면 된다
 
+## 8. 개발할 때 자주 하는 식
+
+백엔드, DB, Redis 같이 여러 개 띄워야 할 때 compose를 많이 씀
+
+예를 들어 로컬에서 API 서버 띄우고 DB 붙여볼 때는 이런 식으로 두고 시작하면 편하다
+
+```yaml
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/app
+
+  db:
+    image: mysql:8
+    environment:
+      MYSQL_DATABASE: app
+      MYSQL_ROOT_PASSWORD: root
+```
+
+- compose 안에서는 `localhost` 대신 서비스명으로 붙는 경우가 많음
+- 그래서 위 예시도 DB 주소를 `db:3306`으로 적음
+
+## 9. 한번씩 막히는 부분
+
+- `docker compose up` 했는데 앱이 바로 죽으면 앱 로그보다 먼저 환경변수 이름이 맞는지 보는 게 빠를 때가 많음
+- `depends_on`을 걸어도 DB가 "실행"만 된 상태일 수 있어서, 앱 쪽에서 재시도 로직이 없으면 처음 기동 때 실패하기도 함
+- 포트 충돌 나면 이미 로컬에서 같은 포트를 쓰는 프로세스가 있는지 같이 확인해야 함
 
