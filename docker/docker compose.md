@@ -126,3 +126,34 @@ services:
 - `depends_on`을 걸어도 DB가 "실행"만 된 상태일 수 있어서, 앱 쪽에서 재시도 로직이 없으면 처음 기동 때 실패하기도 함
 - 포트 충돌 나면 이미 로컬에서 같은 포트를 쓰는 프로세스가 있는지 같이 확인해야 함
 
+## 10. 요즘 명령어 쓸 때 헷갈린 점
+
+- 예전 자료에는 `docker-compose`가 많이 나오는데, 요즘은 `docker compose`로 치는 경우가 더 많음
+- 둘 다 비슷하게 보이지만 환경에 따라 `docker-compose`만 없고 `docker compose`만 되는 경우도 있어서 명령어부터 확인하는 게 덜 헷갈림
+
+```bash
+docker compose version
+docker-compose version
+```
+
+- 팀 문서에 둘 중 하나로 통일해두면 처음 들어온 사람이 덜 헤맨다
+
+## 11. 컨테이너만 다시 띄운다고 끝나지 않을 때
+
+코드만 바뀐 게 아니라 이미지 빌드 내용이 바뀌었으면 `restart`보다 다시 빌드해서 올리는 쪽이 맞다.
+
+```bash
+docker compose up -d --build
+```
+
+- Dockerfile 수정했는데 반영이 안 되면 `restart`만 한 경우가 많음
+- 환경변수 값이 바뀐 경우도 `up -d`로 다시 적용해보는 편이 빠름
+
+볼륨 때문에 예전 데이터가 남아서 이상하게 보일 때도 있다.
+
+```bash
+docker compose down -v
+```
+
+- DB 테스트하다가 스키마가 꼬였을 때 종종 이걸로 다시 시작함
+- 대신 named volume까지 지워지니까 로컬 데이터 날려도 되는 상황에서만 써야 함
