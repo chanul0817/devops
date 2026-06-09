@@ -62,6 +62,45 @@ curl http://my-service.dev.svc.cluster.local
 
 ---
 
+## port / targetPort / nodePort 감각
+
+Service 볼 때 제일 자주 헷갈린 건 어느 포트가 어디를 뜻하는지였다.
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-svc
+spec:
+  type: NodePort
+  selector:
+    app: api
+  ports:
+    - port: 80
+      targetPort: 8080
+      nodePort: 30080
+```
+
+- `port`: Service 자체가 받는 포트
+- `targetPort`: Pod 안 컨테이너가 실제로 듣는 포트
+- `nodePort`: 노드 IP로 외부에서 붙을 때 쓰는 포트
+
+처음 볼 때는 `80 -> 8080`으로 포워딩한다고 생각하면 좀 덜 헷갈린다.
+
+## Service 붙었는지 확인할 때 보는 것
+
+Service를 만들었는데 접속이 안 되면 YAML만 다시 보기보다 selector와 endpoint를 먼저 보는 게 빠르다.
+
+```bash
+kubectl get svc
+kubectl describe svc api-svc
+kubectl get endpoints api-svc
+```
+
+- selector 라벨이 안 맞으면 Service는 떠 있어도 뒤에 연결된 Pod가 없음
+- `endpoints`가 비어 있으면 Pod가 Ready 상태가 아니거나 라벨이 안 맞는 경우를 먼저 의심함
+- NodePort인데 안 열리면 Service 문제 말고 보안 그룹이나 방화벽도 같이 봐야 함
+
 ## 요약
 
 | 기능명              | 설명                                              |
