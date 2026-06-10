@@ -134,6 +134,13 @@ livenessProbe:
   failureThreshold: 3
 ```
 
+### 헬스 체크 엔드포인트를 왜 나누냐
+
+- `/actuator/health` 하나로 다 처리하면 편해 보이는데, 실무에서는 readiness랑 liveness가 원하는 기준이 다를 때가 많음
+- 예를 들어 DB가 잠깐 느려져도 앱 프로세스 자체는 살아 있으면 liveness는 통과시키고, readiness만 실패시켜서 트래픽만 잠깐 빼는 쪽이 덜 위험함
+- 반대로 liveness까지 같은 체크를 쓰면 DB 한 번 흔들릴 때 Pod가 우르르 재시작돼서 더 복잡해질 수 있음
+- 그래서 readiness는 외부 의존성까지 조금 더 넓게 보고, liveness는 진짜 재시작이 필요한 상황만 보게 나누는 편이 보통 안전했음
+
 ---
 
 ## 운영 시 설정 기준
@@ -158,3 +165,5 @@ livenessProbe:
 - readiness 실패가 길어지면 Pod는 살아 있어도 Service 뒤에서는 빠지기 때문에, ALB Ingress나 API 응답 수가 갑자기 줄어든 것처럼 보일 수 있음
 - `kubectl get pod`에서는 Running인데 요청이 계속 503이면 readiness 실패부터 보는 게 빠름
 - 앱 로그에는 에러가 없는데 Pod만 재시작되면, `/actuator/health` 응답 시간과 `timeoutSeconds`가 너무 타이트한 경우도 많음
+- Spring 앱이 느리게 뜨는데 startupProbe 없이 liveness만 먼저 걸어두면, 로그상으로는 기동 중인데도 계속 죽었다 살아나는 경우가 꽤 자주 나옴
+- 이런 경우에는 `kubectl logs --previous <pod명>`으로 직전 컨테이너 로그까지 같이 보는 게 도움이 됨
