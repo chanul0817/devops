@@ -50,3 +50,17 @@
 3. Username: Administrator
 4. Password: AWS 콘솔에서 .pem 키로 해독
 5. RDP로 접속
+
+## 7. 접속 안 될 때 먼저 볼 것
+
+- 보안 그룹 인바운드에 22번 포트가 열려 있는지 확인
+- 접속하는 내 IP가 바뀌었으면 보안 그룹 허용 IP도 다시 수정
+- 인스턴스가 public subnet에 있는지 확인
+- 퍼블릭 IPv4 또는 Elastic IP가 붙어 있는지 확인
+- 우분투는 보통 `ubuntu`, Amazon Linux는 보통 `ec2-user`로 접속
+
+예:
+```bash
+ssh -i 키페어.pem ubuntu@퍼블릭IP
+ssh -i 키페어.pem ec2-user@퍼블릭IP
+```
