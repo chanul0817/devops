@@ -53,3 +53,24 @@ tail -f mylog.txt # 로그 실시간 모니터링
 - **짧은 로그 파일, 처음부터 끝까지 확인**: `cat log.txt`
 - **최근 20줄만 보고 싶을 때**: `tail -n 20 log.txt`
 - **서버 로그가 실시간으로 쌓일 때 확인**: `tail -f log.txt`
+
+---
+
+### 같이 많이 쓰는 명령어
+
+```bash
+tail -f app.log | grep ERROR
+```
+- 실시간 로그 중에서 `ERROR`가 들어간 줄만 보기
+
+```bash
+less app.log
+```
+- 로그가 길 때 위아래로 이동하면서 보기
+- `/검색어` 입력하면 파일 안에서 검색 가능
+
+```bash
+journalctl -u nginx -f
+```
+- systemd 서비스 로그를 실시간으로 보기
+- nginx, docker, cron 같은 서비스 확인할 때 자주 사용
