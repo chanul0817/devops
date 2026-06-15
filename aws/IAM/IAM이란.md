@@ -14,6 +14,13 @@
 - 개발자별 접근 제어: User 생성 후 Group으로 관리
 - 외부 서비스 접근: Role + Policy 연결 후 제공
 - MFA 적용: 사용자별 2단계 인증
+
+## 3-1. User와 Role 감각
+- 사람이 직접 콘솔에 로그인하거나 CLI를 쓸 때는 보통 User를 생각함
+- EC2, Lambda 같은 AWS 서비스가 다른 AWS 리소스에 접근할 때는 Role을 붙이는 게 자연스러움
+- Access Key를 서버에 직접 넣는 것보다 Role을 쓰는 편이 안전함
+- Role은 필요한 순간에 임시 자격 증명을 받아 쓰는 방식이라 키 노출 위험이 줄어듦
+
 ## 4. 자주 쓰는 정책
 - AmazonS3ReadOnlyAccess: S3 읽기만 허용
 - AmazonEC2FullAccess: EC2 전체 권한
