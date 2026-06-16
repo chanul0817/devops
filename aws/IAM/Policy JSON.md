@@ -97,3 +97,10 @@
 - Action/NotAction, Principal/NotPrincipal, Resource/NotResource는 택일
 - Condition은 선택 사항
 - 자격증명 기반 정책은 Principal 생략, 리소스 기반 정책은 반드시 명시
+
+### Condition을 볼 때
+
+- `Condition`은 같은 권한이라도 조건이 맞을 때만 허용하게 만드는 부분
+- 예를 들어 특정 IP, 특정 VPC Endpoint, MFA 여부 같은 조건을 걸 수 있음
+- 권한이 안 먹힐 때는 `Action`, `Resource`만 보지 말고 `Condition`도 같이 확인
+
