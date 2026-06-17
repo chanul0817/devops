@@ -47,3 +47,9 @@
 - 보안 강화, 비용 절감, 권한 제어 등의 이점
 - Gateway Endpoint(S3, DynamoDB)와 Interface Endpoint(대부분의 서비스)로 구분
 
+### Gateway와 Interface 차이
+
+- S3, DynamoDB는 보통 Gateway Endpoint를 많이 사용
+- 대부분의 AWS 서비스는 Interface Endpoint 형태로 붙는 경우가 많음
+- Interface Endpoint는 ENI가 생기고 보안 그룹도 같이 봐야 함
+
