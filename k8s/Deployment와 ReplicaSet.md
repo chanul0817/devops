@@ -61,3 +61,14 @@ containers:
 - name: nginx
 image: nginx:1.25
 ```
+
+### 배포 상태 확인
+
+```bash
+kubectl rollout status deployment/api
+kubectl rollout history deployment/api
+```
+
+- 새 Pod가 정상적으로 뜨는지 확인할 때 사용
+- 문제가 있으면 이전 ReplicaSet으로 되돌릴 수도 있음
+
