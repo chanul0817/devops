@@ -157,3 +157,16 @@ docker compose down -v
 
 - DB 테스트하다가 스키마가 꼬였을 때 종종 이걸로 다시 시작함
 - 대신 named volume까지 지워지니까 로컬 데이터 날려도 되는 상황에서만 써야 함
+
+### env 파일 쓰기
+
+```yaml
+services:
+  app:
+    env_file:
+      - .env
+```
+
+- DB 주소, 포트, 이미지 태그처럼 바뀌는 값은 `.env`로 빼두면 편함
+- 단, 비밀번호 파일을 Git에 올리지 않도록 `.gitignore`도 같이 확인
+
