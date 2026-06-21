@@ -76,3 +76,14 @@ Git에서는 새로운 버전을 기록하기 위한 명령인 커밋(commit)을
 ### Merge
 
 다른 Branch의 내용을 현재 Branch로 가져와 합치는 작업
+
+### add 하기 전에 보는 습관
+
+```bash
+git status
+git diff
+```
+
+- `git status`로 어떤 파일이 바뀌었는지 확인
+- `git diff`로 실제 수정 내용을 보고 add하면 실수 커밋을 줄일 수 있음
+
