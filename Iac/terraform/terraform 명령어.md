@@ -67,3 +67,14 @@ terraform get
 terraform init -reconfigure
 ```
 - 백엔드 설정 바뀐 경우 재초기화
+
+### apply 전에 plan 보기
+
+```bash
+terraform plan
+terraform apply
+```
+
+- `plan`은 실제로 무엇이 생성/수정/삭제될지 미리 보여줌
+- 운영 환경에서는 `apply` 전에 `plan` 결과를 꼭 확인하는 게 안전함
+
