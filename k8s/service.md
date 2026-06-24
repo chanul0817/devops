@@ -111,3 +111,10 @@ kubectl get endpoints api-svc
 | 서비스 퍼블리싱     | 외부에서 접근 가능하도록 Service 타입 지정         |
 | 세션 어피니티       | IP 기반 동일 Pod로 트래픽 유지 (거의 안 씀)        |
 | 트래픽 폴리시       | 트래픽 제어 (Istio 등 서비스 메시로 대체 추천)     |
+
+### endpoints가 비어 있을 때
+
+- Service selector와 Pod label이 맞는지 먼저 확인
+- Pod가 Ready 상태가 아니면 endpoint에 안 잡힐 수 있음
+- `kubectl describe svc`와 `kubectl get endpoints`를 같이 보면 원인 찾기가 빠름
+
