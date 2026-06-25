@@ -167,3 +167,10 @@ livenessProbe:
 - 앱 로그에는 에러가 없는데 Pod만 재시작되면, `/actuator/health` 응답 시간과 `timeoutSeconds`가 너무 타이트한 경우도 많음
 - Spring 앱이 느리게 뜨는데 startupProbe 없이 liveness만 먼저 걸어두면, 로그상으로는 기동 중인데도 계속 죽었다 살아나는 경우가 꽤 자주 나옴
 - 이런 경우에는 `kubectl logs --previous <pod명>`으로 직전 컨테이너 로그까지 같이 보는 게 도움이 됨
+
+### Probe가 계속 실패할 때
+
+- path, port, scheme이 실제 앱 설정과 맞는지 먼저 확인
+- 앱이 뜨는 데 오래 걸리면 `initialDelaySeconds`가 너무 짧을 수 있음
+- readiness 실패는 트래픽 제외, liveness 실패는 컨테이너 재시작으로 이어짐
+
