@@ -38,3 +38,10 @@
 | Group | 사용자 집합 |
 | Role | 임시 권한, 위임 |
 | Policy | 권한 문서 |
+
+### User와 Role 구분
+
+- User는 사람이나 장기 자격 증명에 가깝고, Role은 임시 권한을 받는 방식에 가까움
+- EC2, Lambda 같은 AWS 리소스에는 보통 Role을 붙이는 편이 안전함
+- Access Key를 직접 넣기보다 Role을 우선 고려
+
