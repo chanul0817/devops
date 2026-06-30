@@ -75,3 +75,10 @@ return ResponseEntity.ok("받음");
 - secret 검증이 계속 실패하면 payload를 가공하기 전에 raw body 기준으로 서명 검증하는지 봐야 함
 - 배포 서버 한 대에 webhook을 직접 받게 해두면, 배포 중 timeout 나면서 같은 이벤트가 다시 들어오는 경우도 있어서 큐나 작업 잠금이 있으면 편함
 - Jenkins나 GitHub Actions를 붙여두는 구조라면, webhook 서버는 무거운 작업 하지 말고 "이벤트 확인 후 전달" 역할만 하는 쪽이 관리가 쉬움
+
+### webhook 받을 때
+
+- 외부 요청을 그대로 믿지 말고 secret이나 signature를 확인
+- 같은 이벤트가 중복으로 올 수 있어서 idempotent하게 처리하는 게 좋음
+- 실패한 이벤트를 다시 볼 수 있게 로그를 남겨두면 운영이 편함
+
