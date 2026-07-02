@@ -76,3 +76,10 @@ terraform destroy
 - Terraform은 클라우드 자원을 코드로 관리하게 해주는 도구
 - `.tf` 파일에 작성하고 명령어로 배포하거나 삭제 가능
 - `init`, `plan`, `apply`, `destroy` 자주 씀
+
+### state 파일은 조심해서 다루기
+
+- Terraform은 state를 보고 실제 리소스와 코드를 맞춤
+- state가 꼬이면 리소스를 잘못 만들거나 지울 수 있음
+- 팀에서는 local state보다 remote backend를 쓰는 편이 안전함
+
