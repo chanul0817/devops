@@ -34,3 +34,10 @@ git merge upstream/main
 - fork는 남의 저장소를 내 GitHub로 복사하는 것
 - 오픈소스 수정하고 PR 보내는 데 자주 씀
 - clone은 내 로컬로 가져오는 거고 fork는 GitHub 계정 기준 복사임
+
+### fork 최신화
+
+- 원본 저장소를 `upstream`으로 등록해두면 최신 main을 가져오기 편함
+- PR 올리기 전에는 내 브랜치가 원본 main과 너무 벌어지지 않았는지 확인
+- 충돌은 오래 묵힐수록 풀기 힘들어짐
+
