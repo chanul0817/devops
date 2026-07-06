@@ -66,3 +66,10 @@ storage: 1Gi
 - StatefulSet을 사용하려면 **Headless Service** (`clusterIP: None`)가 함께 필요합니다.
 - `volumeClaimTemplates`가 반드시 있어야 **Pod별 볼륨을 자동 생성**합니다.
 - StatefulSet은 **스케일 업/다운 시에도 데이터 정합성**을 유지하는 데 적합합니다.
+
+### StatefulSet에서 스토리지
+
+- Pod 이름이 고정되어도 데이터는 PVC와 같이 봐야 함
+- 삭제 후 재생성될 때 같은 PVC를 다시 붙이는 구조인지 확인
+- DB를 올릴 때는 백업과 복구 절차도 같이 준비
+
