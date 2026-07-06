@@ -130,3 +130,9 @@ kubectl delete pvc pvc-01 pvc-02 ...
 kubectl delete pv pv-01 pv-02 ...
 ```
 
+### volume 권한 문제
+
+- 컨테이너 안 사용자 UID와 마운트된 볼륨 권한이 안 맞으면 쓰기가 실패함
+- 로그에 permission denied가 보이면 경로와 UID를 같이 확인
+- 임시로 권한을 풀기보다 실행 사용자와 보안 설정을 맞추는 게 좋음
+
