@@ -89,3 +89,10 @@ volumes:
 configMap:
 name: app-config
 ```
+
+### DaemonSet 배치 확인
+
+- 모든 노드에 떠야 하는 에이전트인지 먼저 확인
+- taint가 있는 노드에는 toleration이 없으면 안 뜰 수 있음
+- 로그 수집기나 모니터링 에이전트에서 자주 쓰는 패턴
+
