@@ -64,3 +64,10 @@
 - 설정 고려:
   - `lifecycle.preStop`: 종료 전에 처리할 작업 정의 가능
   - `terminationGracePeriodSeconds`: 기본 30초, App 종료 시간 고려해 늘릴 수 있음
+
+### 이벤트 먼저 보기
+
+- Pod가 안 뜰 때는 로그보다 `kubectl describe pod`의 Events가 먼저 도움될 때가 많음
+- 이미지 pull 실패, 스케줄링 실패, probe 실패가 Events에 바로 보임
+- 같은 메시지가 반복되는지 시간 순서대로 확인
+
