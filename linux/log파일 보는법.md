@@ -111,3 +111,13 @@ grep -i "exception" app.log
 - 장애 시간대를 알면 `tail`보다 검색이 빠를 때가 많음
 - 먼저 큰 로그에서 단어를 좁히고, 그 다음 앞뒤 문맥을 확인
 
+### systemd 로그 보기
+
+```bash
+journalctl -u nginx --since "10 minutes ago"
+```
+
+- systemd 서비스는 파일 로그보다 journal에 먼저 남는 경우가 있음
+- 시간 범위를 좁혀서 보면 장애 시점 확인이 편함
+- `-f`를 붙이면 실시간으로 따라볼 수 있음
+
