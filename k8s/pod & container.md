@@ -71,3 +71,9 @@
 - 이미지 pull 실패, 스케줄링 실패, probe 실패가 Events에 바로 보임
 - 같은 메시지가 반복되는지 시간 순서대로 확인
 
+### ImagePullBackOff가 보일 때
+
+- 이미지 이름과 태그가 실제 registry에 있는지 확인
+- private registry면 imagePullSecret 설정을 같이 봐야 함
+- 태그 오타와 권한 문제를 먼저 의심
+
