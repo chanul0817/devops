@@ -87,3 +87,13 @@ git diff
 - `git status`로 어떤 파일이 바뀌었는지 확인
 - `git diff`로 실제 수정 내용을 보고 add하면 실수 커밋을 줄일 수 있음
 
+### 실수했을 때 reflog
+
+```bash
+git reflog
+```
+
+- reset이나 rebase 후에도 HEAD 이동 기록이 남아 있음
+- 복구할 커밋을 찾을 때 마지막 안전망처럼 쓸 수 있음
+- 그래도 공유 브랜치에서는 강제 push 전에 한 번 더 확인
+
