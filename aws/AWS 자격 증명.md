@@ -92,3 +92,13 @@ aws sts get-caller-identity --profile dev
 - 작업 전에는 현재 계정과 권한을 먼저 확인
 - 운영 계정 명령은 특히 profile 오타를 조심
 
+### 내가 누구인지 확인
+
+```bash
+aws sts get-caller-identity
+```
+
+- 배포 전 현재 계정, role, user를 확인하는 습관이 좋음
+- 권한 오류가 날 때도 먼저 현재 자격 증명을 확인
+- 여러 계정을 오가면 가장 먼저 보는 명령
+
