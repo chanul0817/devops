@@ -44,3 +44,10 @@ aws configure set default.s3.addressing_style virtual
 3. S3가 URL을 발급해서 EC2에 전달
 4. EC2가 사용자에게 전달
 5. 사용자는 URL로 다운로드/업로드 수행
+
+### 만료 시간을 짧게 잡기
+
+- Pre-signed URL은 URL 자체가 임시 권한처럼 동작함
+- 공유 범위가 넓으면 만료 시간을 짧게 잡는 편이 안전함
+- 객체 권한과 URL 만료 시간을 같이 확인
+
