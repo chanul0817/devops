@@ -71,3 +71,9 @@
 - 헬스체크 path가 실제로 200을 주는지 확인
 - 앱 포트와 target group 포트가 다르게 잡히지 않았는지 확인
 
+### ALB 502 볼 때
+
+- target이 응답을 끊었는지, 포트가 안 맞는지 확인
+- 애플리케이션 로그와 ALB target 상태를 같이 봄
+- idle timeout과 upstream timeout도 같이 확인할 때가 많음
+
