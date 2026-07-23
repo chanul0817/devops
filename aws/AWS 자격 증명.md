@@ -81,3 +81,24 @@ aws sts get-caller-identity
 - CLI/SDK: Access Key ID + Secret Access Key(장기/임시)
 - 임시 자격 증명은 STS, Role, 외부 인증 등 다양한 방식으로 발급 가능
 - 보안상 임시 자격 증명 활용이 권장됨
+
+### profile 나눠 쓰기
+
+```bash
+aws sts get-caller-identity --profile dev
+```
+
+- 계정을 여러 개 쓰면 profile을 나눠야 실수를 줄일 수 있음
+- 작업 전에는 현재 계정과 권한을 먼저 확인
+- 운영 계정 명령은 특히 profile 오타를 조심
+
+### 내가 누구인지 확인
+
+```bash
+aws sts get-caller-identity
+```
+
+- 배포 전 현재 계정, role, user를 확인하는 습관이 좋음
+- 권한 오류가 날 때도 먼저 현재 자격 증명을 확인
+- 여러 계정을 오가면 가장 먼저 보는 명령
+
