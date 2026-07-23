@@ -161,3 +161,14 @@ du -sh *
 - 로그 파일이 커졌는지 먼저 보는 경우가 많음
 - 삭제 전에는 서비스가 쓰는 파일인지 확인
 
+### 서비스 상태 확인
+
+```bash
+systemctl status nginx
+systemctl restart nginx
+```
+
+- 서비스가 죽었는지, 재시작 중인지 먼저 확인
+- 설정 변경 후에는 restart 전에 config test를 해두면 안전함
+- 실패 원인은 journal 로그와 같이 봄
+
