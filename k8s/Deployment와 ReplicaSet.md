@@ -72,3 +72,13 @@ kubectl rollout history deployment/api
 - 새 Pod가 정상적으로 뜨는지 확인할 때 사용
 - 문제가 있으면 이전 ReplicaSet으로 되돌릴 수도 있음
 
+### 배포 되돌리기
+
+```bash
+kubectl rollout undo deployment/api
+```
+
+- 되돌리기 전에 어떤 revision으로 갈지 history를 확인
+- 이미지 태그가 명확해야 롤백도 덜 헷갈림
+- DB 변경이 있으면 앱만 되돌리는 것으로 충분하지 않을 수 있음
+
