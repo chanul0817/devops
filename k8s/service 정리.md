@@ -173,3 +173,10 @@ kubectl get service svc-4
 kubectl delete pod pod-1 pod-2
 kubectl delete svc svc-1 svc-2 svc-3 svc-4
 ```
+
+### Service type 고르기
+
+- 내부 통신은 ClusterIP부터 생각
+- 외부 노출은 LoadBalancer나 Ingress와 같이 봄
+- NodePort는 구조를 이해할 때 좋지만 운영 노출은 신중히 사용
+
