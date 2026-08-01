@@ -96,3 +96,9 @@ name: app-config
 - taint가 있는 노드에는 toleration이 없으면 안 뜰 수 있음
 - 로그 수집기나 모니터링 에이전트에서 자주 쓰는 패턴
 
+### ConfigMap 바꾼 뒤
+
+- 환경 변수로 주입한 ConfigMap은 Pod 재시작이 필요할 수 있음
+- volume으로 마운트한 경우에도 앱이 파일 변경을 다시 읽는지 확인
+- 설정 변경 후 rollout 상태를 같이 봐야 함
+

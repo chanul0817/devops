@@ -25,3 +25,10 @@
 - LimitRange는 새로 만들어지는 Pod에만 적용됨.
 - resources가 명시되어 있으면 적용되지 않음.
 - 실험할 땐 기존 Deployment 삭제 후 다시 생성해야 함.
+
+### request와 limit
+
+- request는 스케줄링 기준, limit은 사용 상한으로 생각
+- request가 너무 낮으면 노드에 많이 몰릴 수 있음
+- limit이 너무 낮으면 OOMKilled나 throttling이 생길 수 있음
+
