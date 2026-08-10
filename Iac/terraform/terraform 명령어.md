@@ -90,3 +90,9 @@ terraform apply
 - 민감한 값은 output으로 그대로 노출하지 않도록 조심
 - 모듈 간 연결 값을 정리할 때도 자주 사용함
 
+### terraform 작업 - 처음 볼 때
+
+- 콘솔에서 직접 바꾼 값은 drift로 잡힐 수 있음
+- terraform 문제는 처음부터 결론내기보다 증상을 먼저 작게 나누는 게 좋음
+- provider 버전과 lock 파일 변경도 같이 확인
+
