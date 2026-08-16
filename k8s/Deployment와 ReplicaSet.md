@@ -94,3 +94,9 @@ kubectl rollout undo deployment/api
 - 배포 직후 배포 쪽 지표가 흔들리면 변경 범위부터 다시 확인
 - 롤백 전에 어떤 revision으로 돌아갈지 확인
 
+### 배포 확인 - 장애 시간대
+
+- 새 ReplicaSet만 보지 말고 이전 ReplicaSet도 같이 확인
+- 배포 확인은 장애가 시작된 시간과 마지막 정상 시간을 같이 잡고 봄
+- 이미지 태그가 명확해야 원인 추적이 쉬움
+
