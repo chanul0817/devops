@@ -96,3 +96,9 @@ terraform apply
 - terraform 문제는 처음부터 결론내기보다 증상을 먼저 작게 나누는 게 좋음
 - provider 버전과 lock 파일 변경도 같이 확인
 
+### terraform 작업 - 배포 직후
+
+- apply 전에는 plan에서 삭제 항목을 먼저 확인
+- 배포 직후 terraform 쪽 지표가 흔들리면 변경 범위부터 다시 확인
+- 운영 IaC는 작은 변경으로 나눠서 보는 편이 안전함
+
