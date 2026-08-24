@@ -108,3 +108,9 @@ terraform apply
 - terraform 확인은 장애가 시작된 시간과 마지막 정상 시간을 같이 잡고 봄
 - 민감한 값이 plan이나 output에 노출되지 않게 조심
 
+### terraform 작업 - 권한 볼 때
+
+- 콘솔에서 직접 바꾼 값은 drift로 잡힐 수 있음
+- terraform 문제가 권한처럼 보여도 경로, 대상, 실행 주체를 같이 확인
+- provider 버전과 lock 파일 변경도 같이 확인
+
