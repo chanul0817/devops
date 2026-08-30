@@ -114,3 +114,9 @@ terraform apply
 - terraform 문제가 권한처럼 보여도 경로, 대상, 실행 주체를 같이 확인
 - provider 버전과 lock 파일 변경도 같이 확인
 
+### terraform 작업 - 되돌리기 전
+
+- apply 전에는 plan에서 삭제 항목을 먼저 확인
+- terraform을 되돌리기 전에는 현재 상태를 남겨둬야 비교가 쉬움
+- 운영 IaC는 작은 변경으로 나눠서 보는 편이 안전함
+
