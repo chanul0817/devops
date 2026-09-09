@@ -126,3 +126,9 @@ terraform apply
 - terraform 작업은 작은 변경이라도 영향 범위를 먼저 생각하고 진행
 - 민감한 값이 plan이나 output에 노출되지 않게 조심
 
+### terraform 작업 - 재현할 때
+
+- 콘솔에서 직접 바꾼 값은 drift로 잡힐 수 있음
+- terraform 이슈는 한 번 더 재현되는지 확인해야 임시 현상과 구분됨
+- provider 버전과 lock 파일 변경도 같이 확인
+
