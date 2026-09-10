@@ -228,3 +228,9 @@ docker compose logs -f app
 - compose 이슈는 한 번 더 재현되는지 확인해야 임시 현상과 구분됨
 - volume을 쓰는 서비스는 데이터 경로를 먼저 확인
 
+### compose 운영 - 로그 남길 때
+
+- 컨테이너가 살아 있어도 앱 준비가 끝났는지는 따로 확인
+- compose 확인 결과는 다음 사람이 이어 볼 수 있게 짧게라도 기록
+- logs, ps, events를 같이 보면 흐름을 잡기 쉬움
+
