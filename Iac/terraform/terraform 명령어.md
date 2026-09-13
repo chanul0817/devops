@@ -132,3 +132,9 @@ terraform apply
 - terraform 이슈는 한 번 더 재현되는지 확인해야 임시 현상과 구분됨
 - provider 버전과 lock 파일 변경도 같이 확인
 
+### terraform 작업 - 로그 남길 때
+
+- apply 전에는 plan에서 삭제 항목을 먼저 확인
+- terraform 확인 결과는 다음 사람이 이어 볼 수 있게 짧게라도 기록
+- 운영 IaC는 작은 변경으로 나눠서 보는 편이 안전함
+
