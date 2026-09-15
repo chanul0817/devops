@@ -130,3 +130,9 @@ kubectl rollout undo deployment/api
 - 배포 확인 결과는 다음 사람이 이어 볼 수 있게 짧게라도 기록
 - 롤백 전에 어떤 revision으로 돌아갈지 확인
 
+### 배포 확인 - 원인 좁히기
+
+- 새 ReplicaSet만 보지 말고 이전 ReplicaSet도 같이 확인
+- 배포 원인은 네트워크, 권한, 설정, 리소스로 나눠 보면 덜 헤맴
+- 이미지 태그가 명확해야 원인 추적이 쉬움
+
