@@ -144,3 +144,9 @@ terraform apply
 - terraform 원인은 네트워크, 권한, 설정, 리소스로 나눠 보면 덜 헤맴
 - 민감한 값이 plan이나 output에 노출되지 않게 조심
 
+### terraform 작업 - 반복 장애
+
+- 콘솔에서 직접 바꾼 값은 drift로 잡힐 수 있음
+- terraform 문제가 반복되면 자동 복구보다 왜 반복되는지 먼저 확인
+- provider 버전과 lock 파일 변경도 같이 확인
+
