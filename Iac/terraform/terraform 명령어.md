@@ -150,3 +150,9 @@ terraform apply
 - terraform 문제가 반복되면 자동 복구보다 왜 반복되는지 먼저 확인
 - provider 버전과 lock 파일 변경도 같이 확인
 
+### terraform 작업 - 체크리스트
+
+- apply 전에는 plan에서 삭제 항목을 먼저 확인
+- terraform 체크리스트는 실제 장애 때 바로 칠 수 있을 정도로 짧게 유지
+- 운영 IaC는 작은 변경으로 나눠서 보는 편이 안전함
+
