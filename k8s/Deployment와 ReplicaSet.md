@@ -148,3 +148,9 @@ kubectl rollout undo deployment/api
 - 배포 체크리스트는 실제 장애 때 바로 칠 수 있을 정도로 짧게 유지
 - 롤백 전에 어떤 revision으로 돌아갈지 확인
 
+### 배포 확인 - 마무리 확인
+
+- 새 ReplicaSet만 보지 말고 이전 ReplicaSet도 같이 확인
+- 배포 조치 후에는 정상 지표가 돌아왔는지 마지막으로 확인
+- 이미지 태그가 명확해야 원인 추적이 쉬움
+
