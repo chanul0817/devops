@@ -156,3 +156,9 @@ terraform apply
 - terraform 체크리스트는 실제 장애 때 바로 칠 수 있을 정도로 짧게 유지
 - 운영 IaC는 작은 변경으로 나눠서 보는 편이 안전함
 
+### terraform 작업 - 마무리 확인
+
+- state가 실제 리소스와 맞는지 의심될 때가 있음
+- terraform 조치 후에는 정상 지표가 돌아왔는지 마지막으로 확인
+- 민감한 값이 plan이나 output에 노출되지 않게 조심
+
