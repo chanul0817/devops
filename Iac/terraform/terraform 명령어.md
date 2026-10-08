@@ -162,3 +162,9 @@ terraform apply
 - terraform 조치 후에는 정상 지표가 돌아왔는지 마지막으로 확인
 - 민감한 값이 plan이나 output에 노출되지 않게 조심
 
+### terraform 작업 - 처음 볼 때 2
+
+- 콘솔에서 직접 바꾼 값은 drift로 잡힐 수 있음
+- terraform 문제는 처음부터 결론내기보다 증상을 먼저 작게 나누는 게 좋음
+- provider 버전과 lock 파일 변경도 같이 확인
+
